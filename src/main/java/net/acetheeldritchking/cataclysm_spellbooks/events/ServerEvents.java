@@ -16,14 +16,13 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.Attribute;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.event.entity.living.LivingChangeTargetEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
-import net.minecraftforge.event.entity.living.LivingSpawnEvent;
+import net.minecraftforge.event.entity.living.MobSpawnEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -93,7 +92,7 @@ public class ServerEvents {
     public static void onLivingTickEvent(LivingEvent.LivingTickEvent event)
     {
         Entity entity = event.getEntity();
-        Level level = entity.level;
+        Level level = entity.level();
         if (!level.isClientSide)
         {
             if (entity instanceof LivingEntity livingEntity)
@@ -121,7 +120,7 @@ public class ServerEvents {
     }
 
     @SubscribeEvent
-    public static void handleResistanceAttributeSpawn(LivingSpawnEvent.SpecialSpawn event)
+    public static void handleResistanceAttributeSpawn(MobSpawnEvent.FinalizeSpawn event)
     {
         var mob = event.getEntity();
 

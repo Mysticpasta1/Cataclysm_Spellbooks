@@ -114,7 +114,7 @@ public class IncinerationSpell extends AbstractIgnisSpell {
 
     private void spawnFlameStrike(double x, double z, double minY, double maxY, float rotation, int duration, int wait, int delay, Level level, float radius, boolean isSoul, LivingEntity caster)
     {
-        BlockPos pos = new BlockPos(x, maxY, z);
+        BlockPos pos = new BlockPos((int) x, (int) maxY, (int) z);
         boolean flag = false;
         double d0 = 0.0D;
 

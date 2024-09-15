@@ -13,9 +13,9 @@ public class VoidRunePotionEffect extends MobEffect {
 
     @Override
     public void applyEffectTick(LivingEntity pLivingEntity, int pAmplifier) {
-        if (!pLivingEntity.level.isClientSide())
+        if (!pLivingEntity.level().isClientSide())
         {
-            ServerLevel world = (ServerLevel) pLivingEntity.level;
+            ServerLevel world = (ServerLevel) pLivingEntity.level();
 
             double x = pLivingEntity.getX();
             double y = pLivingEntity.getY();

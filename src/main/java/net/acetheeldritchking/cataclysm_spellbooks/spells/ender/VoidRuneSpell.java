@@ -118,7 +118,7 @@ public class VoidRuneSpell extends AbstractSpell {
     // Literally looking at Evoker & Ender Guardian because they are almost the same
     private void summonVoidRune(double x, double minY, double maxY, double z, float rotation, int delay, LivingEntity caster, LivingEntity target, int spellLevel)
     {
-        BlockPos pos = new BlockPos(x, maxY, z);
+        BlockPos pos = new BlockPos((int) x, (int) maxY, (int) z);
         boolean flag = false;
         double d0 = 0.0D;
 
@@ -126,7 +126,7 @@ public class VoidRuneSpell extends AbstractSpell {
         double targetY = target.getY();
         double targetZ = target.getZ();
 
-        Level level = caster.level;
+        Level level = caster.level();
 
         do {
             BlockPos pos1 = pos.below();
