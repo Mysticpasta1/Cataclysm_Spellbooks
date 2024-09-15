@@ -3,35 +3,37 @@ package net.acetheeldritchking.cataclysm_spellbooks.items.armor;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import mod.azure.azurelib.animatable.GeoItem;
+import mod.azure.azurelib.animatable.client.RenderProvider;
 import mod.azure.azurelib.core.animatable.instance.AnimatableInstanceCache;
 import mod.azure.azurelib.core.animation.AnimatableManager;
 import mod.azure.azurelib.core.animation.AnimationController;
 import mod.azure.azurelib.core.animation.RawAnimation;
+import mod.azure.azurelib.renderer.GeoArmorRenderer;
 import mod.azure.azurelib.util.AzureLibUtil;
+import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
 import java.util.UUID;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-public class CSArmorItem extends ArmorItem implements GeoItem {
+public class CSArmorItem extends ArmorItem {
     private static final UUID[] ARMOR_ATTRIBUTE_UUID_PER_SLOT = new UUID[]
             {UUID.fromString("F7BFFA65-547A-49D2-8804-3D533070E432"),
                     UUID.fromString("B05AF2C0-5862-4CE6-860A-522C11E1571A"),
                     UUID.fromString("15C1FE6B-3596-412A-B6CF-4077CB37140F"),
                     UUID.fromString("82A575D1-366A-4BBD-91F8-25DB6B804F06")};
     private final Multimap<Attribute, AttributeModifier> ARMOR_ATTRIBUTES;
-    private final AnimatableInstanceCache cache = AzureLibUtil.createInstanceCache(this);
-
-    @Override
-    public AnimatableInstanceCache getAnimatableInstanceCache() {
-        return cache;
-    }
 
     public CSArmorItem(CSArmorMaterials materialIn, Type slot, Properties settings) {
         super(materialIn, slot, settings);
@@ -68,23 +70,5 @@ public class CSArmorItem extends ArmorItem implements GeoItem {
         {
             return ImmutableMultimap.of();
         }
-    }
-
-    // Azurelib
-    @Override
-    public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
-        // Idk
-        controllerRegistrar.add(new AnimationController<>(this, "controler", 0, event ->
-        {
-            return event.setAndContinue(RawAnimation.begin().thenLoop("idle"));
-        }));
-    }
-
-    @Override
-    public void createRenderer(Consumer<Object> consumer) {}
-
-    @Override
-    public Supplier<Object> getRenderProvider() {
-        return null;
     }
 }

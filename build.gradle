@@ -173,7 +173,7 @@ dependencies {
     implementation fg.deobf("curse.maven:azurelib-817423:5700755")
 
     // JEI
-    runtimeOnly(fg.deobf("curse.maven:Jei-238222:4712866"))
+    runtimeOnly fg.deobf("curse.maven:jei-238222:5718385")
 
     // Mixins
     annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"

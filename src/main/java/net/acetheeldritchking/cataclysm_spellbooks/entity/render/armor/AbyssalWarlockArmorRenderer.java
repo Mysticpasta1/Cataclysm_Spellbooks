@@ -5,7 +5,12 @@ import mod.azure.azurelib.renderer.GeoArmorRenderer;
 import mod.azure.azurelib.renderer.layer.AutoGlowingGeoLayer;
 import net.acetheeldritchking.cataclysm_spellbooks.entity.armor.AbyssalWarlockArmorModel;
 import net.acetheeldritchking.cataclysm_spellbooks.items.armor.AbyssalWarlockArmorItem;
+import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
+
+import java.util.function.Consumer;
 
 public class AbyssalWarlockArmorRenderer extends GeoArmorRenderer<AbyssalWarlockArmorItem> {
     public AbyssalWarlockArmorRenderer()
